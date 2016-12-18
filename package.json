@@ -1,0 +1,27 @@
+{
+  "name": "datatables-mixins",
+  "version": "0.0.1",
+  "description": "Mixins and templates for datatables",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryncsn/datatables-mixins.git"
+  },
+  "keywords": [
+    "Datatables",
+    "Mixin"
+  ],
+  "author": "ryncsn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ryncsn/datatables-mixins/issues"
+  },
+  "homepage": "https://github.com/ryncsn/datatables-mixins#readme",
+  "dependencies": {
+    "datatables.net": "^1.10.12",
+    "jquery": "^3.1.1"
+  }
+}
