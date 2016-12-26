@@ -178,10 +178,32 @@
     return _mixture.apply(this, [param]);
   }
 
+  function DataTableJumpPageButton(param){
+    var that = this;
+    var initCompleteNext = param.initComplete;
+    param.initComplete = function(setting, json){
+      var table = this.api();
+      var tbody = this.find('tbody');
+      var idPrefix = this.attr("id");
+      $(this).closest(".dataTables_wrapper").on("click", `#${idPrefix}_ellipsis`, function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var page = prompt("Jump to page:");
+        if($.isNumeric(page)){
+          table.page(parseInt(page) - 1).draw(false);
+        }
+      });
+      if(initCompleteNext)
+        initCompleteNext.apply(this, [setting, json]);
+    };
+    return _mixture.apply(this, [param]);
+  }
+
   let Mixins = {
     DataSearchTable: DataSearchTable,
     DataTableWithChildRow: DataTableWithChildRow,
     DataTableWithInlineButton: DataTableWithInlineButton,
+    DataTableJumpPageButton: DataTableJumpPageButton,
   };
 
   $.fn.extend(Mixins);
