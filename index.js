@@ -125,14 +125,14 @@
     var that = this;
 
     if (param.columns && param.columns.length > 0){
-      let _orig_render = param.columns[0].render || function(data){return data;};
+      var _orig_render = param.columns[0].render || function(data){return data;};
       param.columns[0].render = function(data){
-        return `\
-        <div class="details-control pull-left" style="margin-right:10px;">\
-        <i class="fa fa-fw fa-plus" aria-hidden="true"></i>\
-        </div>\
-        ${_orig_render(data)}\
-        `;
+        return (
+          '<div class="details-control pull-left" style="margin-right:10px;">' +
+          '<i class="fa fa-fw fa-plus" aria-hidden="true"></i>' +
+          '</div>' +
+          _orig_render(data)
+        );
       };
     }
 
@@ -185,7 +185,7 @@
       var table = this.api();
       var tbody = this.find('tbody');
       var idPrefix = this.attr("id");
-      $(this).closest(".dataTables_wrapper").on("click", `#${idPrefix}_ellipsis`, function(e){
+      $(this).closest(".dataTables_wrapper").on("click", '#'+idPrefix+'_ellipsis', function(e){
         e.preventDefault();
         e.stopPropagation();
         var page = prompt("Jump to page:");
@@ -199,7 +199,7 @@
     return _mixture.apply(this, [param]);
   }
 
-  let Mixins = {
+  var Mixins = {
     DataSearchTable: DataSearchTable,
     DataTableWithChildRow: DataTableWithChildRow,
     DataTableWithInlineButton: DataTableWithInlineButton,
